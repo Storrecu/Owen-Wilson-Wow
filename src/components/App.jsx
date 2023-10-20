@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 //imports
 import { useEffect, useState } from 'react';
 
@@ -9,6 +10,7 @@ import callToApi from '../services/callToApi';
 
 //components
 import MovieSceneList from './MovieSceneList';
+import Filters from './Filters';
 
 // import ls from '../services/localStorage';
 // import { Link, Route, Routes } from "react-router-dom";
@@ -18,25 +20,24 @@ import MovieSceneList from './MovieSceneList';
 function App() {
   //states
   const [filmList, setFilmList] = useState([]);
+  const [filterValue, setFilterValue] = useState('');
+
   //effects
   useEffect(() => {
     callToApi().then((response) => {
       setFilmList(response);
     });
   }, []);
-  //handlers from events
 
-  //renders
-  const renderFilmList = () => {
-    return filmList.map((eachFilm, i) => (
-      <li key={i}>
-        <img src={eachFilm.poster} alt="Each movie poster" />
-        <h2>{eachFilm.movie}</h2>
-        <p>{eachFilm.phrase}</p>
-        <p>{eachFilm.year}</p>
-      </li>
-    ));
+  // handlers from events
+  const handleFilterChange = (value) => {
+    setFilterValue(value);
   };
+
+  // renders
+  const filteredFilmList = filmList.filter((eachFilm) =>
+    eachFilm.movie.toLowerCase().includes(filterValue.toLowerCase())
+  );
 
   return (
     <>
@@ -44,7 +45,8 @@ function App() {
         <h1>Owen Wilson's "wow"</h1>
       </header>
       <main>
-        <MovieSceneList filmList={filmList} />
+        <Filters filterValue={filterValue} filterChange={handleFilterChange} />
+        <MovieSceneList filmList={filteredFilmList} />
       </main>
       <footer>
         <p>Silvia Torres for Adalab 2023</p>
