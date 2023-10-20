@@ -1,32 +1,56 @@
-//imports dependencias, images, componentes, styles
-// import { useEffect, useState } from 'react';
-// import callToApi from '../services/api';
+//imports
+import { useEffect, useState } from 'react';
+
+//styles
+import '../styles/App.scss';
+
+//services
+import callToApi from '../services/callToApi';
+
+//components
+import MovieSceneList from './MovieSceneList';
+
 // import ls from '../services/localStorage';
-//import PropTypes from "prop-types";
 // import { Link, Route, Routes } from "react-router-dom";
 //import { useLocation, matchPath } from "react-router";
 //import { useParams } from "react-router-dom";
-import '../styles/App.scss';
 
 function App() {
   //states
-
+  const [filmList, setFilmList] = useState([]);
   //effects
-
+  useEffect(() => {
+    callToApi().then((response) => {
+      setFilmList(response);
+    });
+  }, []);
   //handlers from events
 
   //renders
+  const renderFilmList = () => {
+    return filmList.map((eachFilm, i) => (
+      <li key={i}>
+        <img src={eachFilm.poster} alt="Each movie poster" />
+        <h2>{eachFilm.movie}</h2>
+        <p>{eachFilm.phrase}</p>
+        <p>{eachFilm.year}</p>
+      </li>
+    ));
+  };
 
-  //html
   return (
     <>
-      <p></p>
+      <header>
+        <h1>Owen Wilson's "wow"</h1>
+      </header>
+      <main>
+        <MovieSceneList filmList={filmList} />
+      </main>
+      <footer>
+        <p>Silvia Torres for Adalab 2023</p>
+      </footer>
     </>
   );
 }
-//NombreDeMiComponente.propTypes = {
-//   nombreDeMiPropDeTipoStringOpcional: PropTypes.string,
-//   nombreDeMiPropDeTipoStringObligatoria: PropTypes.string.isRequired,
-// };
 
 export default App;

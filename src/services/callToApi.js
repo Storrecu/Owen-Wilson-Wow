@@ -1,18 +1,20 @@
 // Fichero src/services/api.js
 
 const callToApi = () => {
-  // Llamamos a la API
-  return fetch('https://swapi.dev/api/people/5') // Este 5 es el id de Leia Skywalker
+  return fetch(
+    'https://owen-wilson-wow-api.onrender.com/wows/random?results=50'
+  )
     .then((response) => response.json())
     .then((response) => {
-      // Cuando responde la API podemos limpiar los datos aquí
-      const result = {
-        name: response.name,
-        birthYear: response.birth_year,
-        height: response.height,
-        mass: response.mass,
-        eyeColor: response.eye_color,
-      };
+      const result = response.map((film) => {
+        return {
+          poster: film.poster,
+          movie: film.movie,
+          phrase: film.full_line,
+          year: film.year,
+          audio: film.audio,
+        };
+      });
       return result;
     });
 };
