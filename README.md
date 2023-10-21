@@ -8,7 +8,7 @@ El objetivo del ejercicio es crear una lista de tarjetas de películas, protagon
 Estas películas, son aquellas en las que se recoge alguna frase que contiene la muletilla "wow" dicha por el actor.
 
 ## Desglose de componentes del proyecto: 
-![desglose de componentes de la página principal del proyecto](./src/images/Project-preview.png)
+![desglose de componentes de la página principal del proyecto](./src/images/Project.png)
 ![desglose de componentes de la página del detalle de la película](./src/images/Project-preview-movie-detail.png)
 
 En este ejercicio se han dividido las tareas a realizar en 2 partes:
