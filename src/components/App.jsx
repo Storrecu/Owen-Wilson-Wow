@@ -14,14 +14,14 @@ function App() {
   //states
   const [filmList, setFilmList] = useState([]);
   const [filterValue, setFilterValue] = useState('');
-  // const [yearRange, setYearRange] = useState([]);
+  const [yearRange, setYearRange] = useState([]);
   const [selectYear, setSelectYear] = useState('');
 
   //effects
   useEffect(() => {
     callToApi().then((response) => {
       setFilmList(response);
-      // calculateYearRange(response);
+      calculateYearRange(response);
     });
   }, []);
 
@@ -35,21 +35,21 @@ function App() {
   };
 
   // renders & other functions
-  // const calculateYearRange = (filmList) => {
-  //   let allYears = [];
-  //   const years = filmList.map((film) => film.year);
-  //   console.log('years > ', years.sort());
-  //   const minYear = Math.min(...years);
-  //   console.log('minYear > ', minYear);
-  //   const maxYear = Math.max(...years);
-  //   console.log('maxYear > ', maxYear);
+  const calculateYearRange = (filmList) => {
+    let allYears = [];
+    const years = filmList.map((film) => film.year);
+    console.log('years > ', years.sort());
+    const minYear = Math.min(...years);
+    console.log('minYear > ', minYear);
+    const maxYear = Math.max(...years);
+    console.log('maxYear > ', maxYear);
 
-  //   for (let index = minYear; index <= maxYear; index++) {
-  //     allYears.push(index);
-  //   }
-  //   setYearRange(allYears);
-  //   console.log(yearRange);
-  // };
+    for (let index = minYear; index <= maxYear; index++) {
+      allYears.push(index);
+    }
+    setYearRange(allYears);
+    console.log(yearRange);
+  };
 
   console.log(selectYear);
 
@@ -76,6 +76,7 @@ function App() {
           filterChange={handleFilterChange}
           selectYear={selectYear}
           selectChange={handleSelectYear}
+          yearRange={yearRange}
         />
         <MovieSceneList filmList={filteredFilmList} />
       </main>

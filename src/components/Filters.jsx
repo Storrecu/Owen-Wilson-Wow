@@ -2,7 +2,13 @@ import PropTypes from 'prop-types';
 import FilterByName from './FilterByName';
 import FilterByYear from './FilterByYear';
 
-const Filters = ({ filterValue, filterChange, selectYear, selectChange }) => {
+const Filters = ({
+  filterValue,
+  filterChange,
+  selectYear,
+  selectChange,
+  yearRange,
+}) => {
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
   };
@@ -12,7 +18,11 @@ const Filters = ({ filterValue, filterChange, selectYear, selectChange }) => {
       <h2>Filter by...</h2>
       <form onSubmit={handleFormSubmit}>
         <FilterByName filterValue={filterValue} filterChange={filterChange} />
-        <FilterByYear selectYear={selectYear} selectChange={selectChange} />
+        <FilterByYear
+          selectYear={selectYear}
+          selectChange={selectChange}
+          yearRange={yearRange}
+        />
       </form>
     </>
   );
@@ -22,6 +32,7 @@ Filters.propTypes = {
   filterChange: PropTypes.func,
   selectYear: PropTypes.string,
   selectChange: PropTypes.func,
+  yearRange: PropTypes.array,
 };
 
 export default Filters;
