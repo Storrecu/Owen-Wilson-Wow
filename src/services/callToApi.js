@@ -13,6 +13,7 @@ const callToApi = () => {
           phrase: film.full_line,
           year: film.year,
           audio: film.audio,
+          director: film.director,
         };
       });
       return result;

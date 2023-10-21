@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import MovieSceneItem from './MovieSceneItem';
 
 const MovieSceneList = ({ filmList }) => {
   const orderedFilmList = filmList.sort((a, b) =>
@@ -10,12 +11,7 @@ const MovieSceneList = ({ filmList }) => {
   }
 
   const renderFilmItem = orderedFilmList.map((eachFilm, i) => (
-    <li key={i}>
-      <img className="card" src={eachFilm.poster} alt="Movie poster" />
-      <h2>{eachFilm.movie}</h2>
-      <p>{eachFilm.phrase}</p>
-      <p>{eachFilm.year}</p>
-    </li>
+    <MovieSceneItem key={i} film={eachFilm} />
   ));
 
   return (

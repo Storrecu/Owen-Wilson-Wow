@@ -1,10 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import '../styles/App.scss';
 import callToApi from '../services/callToApi';
-import MovieSceneList from './MovieSceneList';
-import Filters from './Filters';
+import Header from './common/Header';
+import Footer from './common/Footer';
+import Landing from './Landing';
+import MovieSceneList from './movies/MovieSceneList';
+import Filters from './filters/Filters';
+import MovieSceneDetails from './movies/MovieSceneDetail';
 
 // import ls from '../services/localStorage';
 //import { useLocation, matchPath } from "react-router";
@@ -38,20 +42,14 @@ function App() {
   const calculateYearRange = (filmList) => {
     let allYears = [];
     const years = filmList.map((film) => film.year);
-    console.log('years > ', years.sort());
     const minYear = Math.min(...years);
-    console.log('minYear > ', minYear);
     const maxYear = Math.max(...years);
-    console.log('maxYear > ', maxYear);
 
     for (let index = minYear; index <= maxYear; index++) {
       allYears.push(index);
     }
     setYearRange(allYears);
-    console.log(yearRange);
   };
-
-  console.log(selectYear);
 
   const filteredFilmList = filmList
     .filter((eachFilm) =>
@@ -68,20 +66,31 @@ function App() {
   return (
     <>
       <header>
-        <h1>Owen Wilson's "wow"</h1>
+        <Header />
       </header>
       <main>
-        <Filters
-          filterValue={filterValue}
-          filterChange={handleFilterChange}
-          selectYear={selectYear}
-          selectChange={handleSelectYear}
-          yearRange={yearRange}
-        />
-        <MovieSceneList filmList={filteredFilmList} />
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route
+            path="/movies"
+            element={
+              <>
+                <Filters
+                  filterValue={filterValue}
+                  filterChange={handleFilterChange}
+                  selectYear={selectYear}
+                  selectChange={handleSelectYear}
+                  yearRange={yearRange}
+                />
+                <MovieSceneList filmList={filteredFilmList} />
+              </>
+            }
+          />
+          <Route path="/movies/:id" element={<MovieSceneDetails />} />
+        </Routes>
       </main>
       <footer>
-        <p>Silvia Torres for Adalab 2023</p>
+        <Footer />
       </footer>
     </>
   );
