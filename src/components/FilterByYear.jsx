@@ -1,17 +1,10 @@
 import PropTypes from 'prop-types';
 
-const FilterByYear = ({ selectYear, yearRange, selectChange }) => {
+const FilterByYear = ({ selectYear, selectChange }) => {
   const handleSelect = (ev) => {
-    selectChange(ev.target.value);
+    const selectedYear = ev.target.value;
+    selectChange(selectedYear === 'All years' ? '' : selectedYear);
   };
-
-  const yearList = yearRange.map((year, i) => {
-    return (
-      <option key={i} value={year}>
-        {year}
-      </option>
-    );
-  });
 
   return (
     <>
@@ -19,14 +12,13 @@ const FilterByYear = ({ selectYear, yearRange, selectChange }) => {
         Search by year
         <select
           className="form__input-text"
-          name="search_year"
-          id="search_year"
+          name="selectYear"
+          id="selectYear"
           value={selectYear}
           onChange={handleSelect}
         >
           <option value="">All years</option>
-          {yearList}
-          {/* <option value="1996">1996</option>
+          <option value="1996">1996</option>
           <option value="1997">1997</option>
           <option value="1998">1998</option>
           <option value="1999">1999</option>
@@ -47,7 +39,7 @@ const FilterByYear = ({ selectYear, yearRange, selectChange }) => {
           <option value="2014">2014</option>
           <option value="2015">2015</option>
           <option value="2016">2016</option>
-          <option value="2017">2017</option> */}
+          <option value="2017">2017</option>
         </select>
       </label>
     </>
@@ -55,7 +47,6 @@ const FilterByYear = ({ selectYear, yearRange, selectChange }) => {
 };
 FilterByYear.propTypes = {
   selectYear: PropTypes.string,
-  yearRange: PropTypes.array,
   selectChange: PropTypes.func,
 };
 
