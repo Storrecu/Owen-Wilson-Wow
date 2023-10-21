@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 
 const MovieSceneList = ({ filmList }) => {
-  const uniqueFilmNames = new Set(filmList.map((film) => film.movie));
-  const uniqueFilmList = filmList.filter((film) =>
-    uniqueFilmNames.has(film.movie)
+  const orderedFilmList = filmList.sort((a, b) =>
+    a.movie.localeCompare(b.movie)
   );
 
-  if (uniqueFilmList.length === 0) {
+  if (filmList.length === 0) {
     return <p>No matches found</p>;
   }
-  const renderFilmItem = uniqueFilmList.map((eachFilm, i) => (
+
+  const renderFilmItem = orderedFilmList.map((eachFilm, i) => (
     <li key={i}>
       <img className="card" src={eachFilm.poster} alt="Movie poster" />
       <h2>{eachFilm.movie}</h2>

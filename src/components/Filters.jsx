@@ -1,24 +1,27 @@
 import PropTypes from 'prop-types';
+import FilterByName from './FilterByName';
+import FilterByYear from './FilterByYear';
 
-const Filters = ({ filterValue, filterChange }) => {
+const Filters = ({
+  filterValue,
+  filterChange,
+  selectYear,
+  selectChange,
+  yearRange,
+}) => {
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
   };
 
-  const handleChangeInputMovie = (ev) => {
-    filterChange(ev.target.value);
-  };
-
   return (
     <>
+      <h2>Filter by...</h2>
       <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          placeholder="Write any movie name to start"
-          name=""
-          id=""
-          value={filterValue}
-          onChange={handleChangeInputMovie}
+        <FilterByName filterValue={filterValue} filterChange={filterChange} />
+        <FilterByYear
+          selectYear={selectYear}
+          selectChange={selectChange}
+          yearRange={yearRange}
         />
       </form>
     </>
@@ -27,6 +30,9 @@ const Filters = ({ filterValue, filterChange }) => {
 Filters.propTypes = {
   filterValue: PropTypes.string,
   filterChange: PropTypes.func,
+  selectYear: PropTypes.string,
+  selectChange: PropTypes.func,
+  yearRange: PropTypes.array,
 };
 
 export default Filters;
