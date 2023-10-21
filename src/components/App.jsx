@@ -1,14 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-//imports
+
 import { useEffect, useState } from 'react';
-
-//styles
 import '../styles/App.scss';
-
-//services
 import callToApi from '../services/callToApi';
-
-//components
 import MovieSceneList from './MovieSceneList';
 import Filters from './Filters';
 
@@ -21,11 +15,14 @@ function App() {
   //states
   const [filmList, setFilmList] = useState([]);
   const [filterValue, setFilterValue] = useState('');
+  const [yearRange, setYearRange] = useState([]);
+  const [selectYear, setSelectYear] = useState('');
 
   //effects
   useEffect(() => {
     callToApi().then((response) => {
       setFilmList(response);
+      calculateYearRange(response);
     });
   }, []);
 
@@ -34,7 +31,27 @@ function App() {
     setFilterValue(value);
   };
 
-  // renders
+  const handleSelectYear = (value) => {
+    setSelectYear(value);
+  };
+
+  // renders & other functions
+  const calculateYearRange = (filmList) => {
+    let allYears = [];
+    const years = filmList.map((film) => film.year);
+    console.log('years > ', years.sort());
+    const minYear = Math.min(...years);
+    console.log('minYear > ', minYear);
+    const maxYear = Math.max(...years);
+    console.log('maxYear > ', maxYear);
+
+    for (let index = minYear; index <= maxYear; index++) {
+      allYears.push(index);
+    }
+    setYearRange(allYears);
+    console.log(yearRange);
+  };
+
   const filteredFilmList = filmList.filter((eachFilm) =>
     eachFilm.movie.toLowerCase().includes(filterValue.toLowerCase())
   );
@@ -45,7 +62,13 @@ function App() {
         <h1>Owen Wilson's "wow"</h1>
       </header>
       <main>
-        <Filters filterValue={filterValue} filterChange={handleFilterChange} />
+        <Filters
+          filterValue={filterValue}
+          filterChange={handleFilterChange}
+          selectYear={selectYear}
+          yearRange={yearRange}
+          selectChange={handleSelectYear}
+        />
         <MovieSceneList filmList={filteredFilmList} />
       </main>
       <footer>
