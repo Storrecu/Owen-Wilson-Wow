@@ -5,6 +5,7 @@ import { useLocation, matchPath } from 'react-router';
 import { v4 as uuidv4 } from 'uuid';
 import '../styles/App.scss';
 import callToApi from '../services/callToApi';
+import localStorage from '../services/localStorage';
 import Header from './common/Header';
 import Footer from './common/Footer';
 import Landing from './Landing';
@@ -12,8 +13,6 @@ import Filters from './filters/Filters';
 import MovieSceneList from './movies/MovieSceneList';
 import MovieSceneDetails from './movies/MovieSceneDetail';
 import NotFoundPage from './NotFoundPage';
-
-// import ls from '../services/localStorage';
 
 function App() {
   //states
@@ -32,7 +31,7 @@ function App() {
     });
   }, []);
 
-  // handlers from events
+  //handlers from events
   const handleFilterChange = (value) => {
     setFilterValue(value);
   };
@@ -41,7 +40,7 @@ function App() {
     setSelectYear(value);
   };
 
-  // renders & other functions
+  //renders & other functions
   const filteredFilmList = filmList
     .filter((eachFilm) =>
       eachFilm.movie.toLowerCase().includes(filterValue.toLowerCase())

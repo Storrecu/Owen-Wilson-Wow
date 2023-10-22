@@ -1,6 +1,16 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import localStorage from '../../services/localStorage';
 
 const MovieSceneDetail = ({ film }) => {
+  if (!film) {
+    return <p>Loading...</p>;
+  }
+
+  useEffect(() => {
+    localStorage.set('currentMovie', film);
+  }, [film]);
+
   const openAudioClip = () => {
     window.open(film.audio, '_blank');
   };

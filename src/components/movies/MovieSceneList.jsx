@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import MovieSceneItem from './MovieSceneItem';
@@ -21,12 +20,11 @@ const MovieSceneList = ({ filmList }) => {
   }
 
   const renderFilmItem = orderedFilmList.map((eachFilm) => (
-    <Link to={`/movies/${eachFilm.id}`} key={uuidv4()}>
-      <MovieSceneItem
-        film={eachFilm}
-        onClick={() => handleFilmClick(eachFilm)}
-      />
-    </Link>
+    <MovieSceneItem
+      key={uuidv4()}
+      film={eachFilm}
+      onClick={() => handleFilmClick(eachFilm)}
+    />
   ));
 
   return (
