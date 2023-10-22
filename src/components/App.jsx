@@ -1,17 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
+import { useLocation, matchPath } from 'react-router';
+import { v4 as uuidv4 } from 'uuid';
 import '../styles/App.scss';
 import callToApi from '../services/callToApi';
 import Header from './common/Header';
 import Footer from './common/Footer';
 import Landing from './Landing';
-import MovieSceneList from './movies/MovieSceneList';
 import Filters from './filters/Filters';
+import MovieSceneList from './movies/MovieSceneList';
 import MovieSceneDetails from './movies/MovieSceneDetail';
 
 // import ls from '../services/localStorage';
-//import { useLocation, matchPath } from "react-router";
+
 //import { useParams } from "react-router-dom";
 
 function App() {
@@ -23,7 +25,11 @@ function App() {
   //effects
   useEffect(() => {
     callToApi().then((response) => {
-      setFilmList(response);
+      const filmWithIds = response.map((film) => ({
+        ...film,
+        id: uuidv4(),
+      }));
+      setFilmList(filmWithIds);
     });
   }, []);
 
@@ -51,6 +57,12 @@ function App() {
 
   const yearsOfScenes = filmList.map((film) => film.year);
 
+  const { pathname } = useLocation();
+  const routeData = matchPath('/movies/:id', pathname);
+  const movieId = routeData !== null ? routeData.params.id : '';
+
+  const movieData = filmList.find((film) => film.id === movieId);
+
   return (
     <>
       <header>
@@ -71,10 +83,19 @@ function App() {
                   yearsOfScenes={yearsOfScenes}
                 />
                 <MovieSceneList filmList={filteredFilmList} />
+                <Link to="/">Back to Home Page</Link>
               </>
             }
           />
-          <Route path="/movies/:id" element={<MovieSceneDetails />} />
+          <Route
+            path="/movies/:id"
+            element={
+              <>
+                <MovieSceneDetails film={movieData} />
+                <Link to="/movies">Back</Link>
+              </>
+            }
+          />
         </Routes>
       </main>
       <footer>

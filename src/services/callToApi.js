@@ -1,4 +1,5 @@
 // Fichero src/services/api.js
+import { v4 as uuidv4 } from 'uuid';
 
 const callToApi = () => {
   return fetch(
@@ -8,6 +9,7 @@ const callToApi = () => {
     .then((response) => {
       const result = response.map((film) => {
         return {
+          id: uuidv4(),
           poster: film.poster,
           movie: film.movie,
           phrase: film.full_line,

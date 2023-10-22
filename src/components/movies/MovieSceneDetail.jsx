@@ -1,15 +1,21 @@
 import PropTypes from 'prop-types';
-const MovieSceneDetail = ({ director, audio }) => {
+
+const MovieSceneDetail = ({ film }) => {
   return (
     <>
-      <p>{director}</p>
-      <p>{audio}</p>
+      <section>
+        <img className="card" src={film.poster} alt="Movie poster" />
+        <h2>{film.movie}</h2>
+        <p>{film.phrase}</p>
+        <p>{film.year}</p>
+        <p>{film.director}</p>
+        <p>{film.audio}</p>
+      </section>
     </>
   );
 };
 MovieSceneDetail.propTypes = {
-  director: PropTypes.string,
-  audio: PropTypes.string,
+  film: PropTypes.array,
 };
 
 export default MovieSceneDetail;
