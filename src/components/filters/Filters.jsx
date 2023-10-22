@@ -7,7 +7,7 @@ const Filters = ({
   filterChange,
   selectYear,
   selectChange,
-  yearRange,
+  yearsOfScenes,
 }) => {
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
@@ -21,7 +21,7 @@ const Filters = ({
         <FilterByYear
           selectYear={selectYear}
           selectChange={selectChange}
-          yearRange={yearRange}
+          yearsOfScenes={yearsOfScenes}
         />
       </form>
     </>
@@ -32,7 +32,7 @@ Filters.propTypes = {
   filterChange: PropTypes.func,
   selectYear: PropTypes.string,
   selectChange: PropTypes.func,
-  yearRange: PropTypes.array,
+  yearsOfScenes: PropTypes.array,
 };
 
 export default Filters;

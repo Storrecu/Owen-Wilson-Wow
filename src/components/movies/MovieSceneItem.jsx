@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import MovieSceneDetail from './MovieSceneDetail';
+// import MovieSceneDetail from './MovieSceneDetail';
 
 const MovieSceneItem = ({ film }) => {
   return (
@@ -9,7 +9,7 @@ const MovieSceneItem = ({ film }) => {
         <h2>{film.movie}</h2>
         <p>{film.phrase}</p>
         <p>{film.year}</p>
-        <MovieSceneDetail director={film.director} audio={film.audio} />
+        {/* <MovieSceneDetail director={film.director} audio={film.audio} /> */}
       </li>
     </>
   );

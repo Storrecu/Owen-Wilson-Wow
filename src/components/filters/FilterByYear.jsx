@@ -1,9 +1,19 @@
 import PropTypes from 'prop-types';
 
-const FilterByYear = ({ selectYear, selectChange, yearRange }) => {
+const FilterByYear = ({ selectYear, selectChange, yearsOfScenes }) => {
   const handleSelect = (ev) => {
     const selectedYear = ev.target.value;
     selectChange(selectedYear === 'All years' ? '' : selectedYear);
+  };
+
+  const renderYearsOptions = () => {
+    const uniqueYears = new Set(yearsOfScenes);
+    const sortedYears = Array.from(uniqueYears).sort();
+    return sortedYears.map((eachYear, i) => (
+      <option key={i} value={eachYear}>
+        {eachYear}
+      </option>
+    ));
   };
 
   return (
@@ -18,11 +28,7 @@ const FilterByYear = ({ selectYear, selectChange, yearRange }) => {
           onChange={handleSelect}
         >
           <option value="">All years</option>
-          {yearRange.map((year, i) => (
-            <option key={i} value={String(year)}>
-              {year}
-            </option>
-          ))}
+          {renderYearsOptions()}
         </select>
       </label>
     </>
@@ -31,7 +37,7 @@ const FilterByYear = ({ selectYear, selectChange, yearRange }) => {
 FilterByYear.propTypes = {
   selectYear: PropTypes.string,
   selectChange: PropTypes.func,
-  yearRange: PropTypes.array,
+  yearsOfScenes: PropTypes.array,
 };
 
 export default FilterByYear;
