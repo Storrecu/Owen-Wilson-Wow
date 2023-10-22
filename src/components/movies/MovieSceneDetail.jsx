@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 
 const MovieSceneDetail = ({ film }) => {
+  const openAudioClip = () => {
+    window.open(film.audio, '_blank');
+  };
+
   return (
     <>
       <section>
@@ -9,13 +13,29 @@ const MovieSceneDetail = ({ film }) => {
         <p>{film.phrase}</p>
         <p>{film.year}</p>
         <p>{film.director}</p>
-        <p>{film.audio}</p>
+        <a
+          href={film.audio}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={openAudioClip}
+        >
+          <span role="img" aria-label="Audio Clip">
+            🎧
+          </span>{' '}
+          Listen audio
+        </a>
       </section>
     </>
   );
 };
 MovieSceneDetail.propTypes = {
-  film: PropTypes.array,
+  film: PropTypes.shape({
+    poster: PropTypes.string,
+    movie: PropTypes.string,
+    phrase: PropTypes.string,
+    year: PropTypes.number,
+    director: PropTypes.string,
+    audio: PropTypes.string,
+  }),
 };
-
 export default MovieSceneDetail;

@@ -11,10 +11,9 @@ import Landing from './Landing';
 import Filters from './filters/Filters';
 import MovieSceneList from './movies/MovieSceneList';
 import MovieSceneDetails from './movies/MovieSceneDetail';
+import NotFoundPage from './NotFoundPage';
 
 // import ls from '../services/localStorage';
-
-//import { useParams } from "react-router-dom";
 
 function App() {
   //states
@@ -92,10 +91,11 @@ function App() {
             element={
               <>
                 <MovieSceneDetails film={movieData} />
-                <Link to="/movies">Back</Link>
+                <Link to="/movies">Back to movies list</Link>
               </>
             }
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <footer>

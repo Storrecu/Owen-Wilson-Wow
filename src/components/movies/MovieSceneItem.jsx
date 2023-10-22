@@ -5,12 +5,11 @@ import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import MovieSceneDetail from './MovieSceneDetail';
 
-const MovieSceneItem = ({ film, onClick }) => {
+const MovieSceneItem = ({ film }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
-    setIsClicked(true);
-    onClick();
+    setIsClicked(!isClicked);
   };
   return (
     <>
