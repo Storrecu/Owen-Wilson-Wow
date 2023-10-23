@@ -1,8 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
+import '../../styles/layout/Header.scss';
+
 const Header = () => {
   return (
     <>
-      <h1>Owen Wilson's "wow"</h1>
+      <div className="header">
+        <h1 className="header_title">
+          Owen Wilson's "wow" <i className="fa-solid fa-film"></i>
+        </h1>
+      </div>
     </>
   );
 };

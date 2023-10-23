@@ -1,7 +1,13 @@
+import '../../styles/layout/Footer.scss';
+import logo from '../../images/logo-adalab.png';
+
 const Footer = () => {
   return (
     <>
-      <p>Silvia Torres for Adalab 2023</p>
+      <div className="footer">
+        <p className="footer_text"> Silvia Torres for Adalab 2023</p>
+        <img className="footer_logo" src={logo} alt="Adalab logo" />
+      </div>
     </>
   );
 };

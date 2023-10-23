@@ -5,7 +5,6 @@ import { useLocation, matchPath } from 'react-router';
 import { v4 as uuidv4 } from 'uuid';
 import '../styles/App.scss';
 import callToApi from '../services/callToApi';
-import localStorage from '../services/localStorage';
 import Header from './common/Header';
 import Footer from './common/Footer';
 import Landing from './Landing';

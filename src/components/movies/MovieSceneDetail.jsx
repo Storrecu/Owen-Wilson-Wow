@@ -1,19 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import localStorage from '../../services/localStorage';
 
 const MovieSceneDetail = ({ film }) => {
-  if (!film) {
-    return <p>Loading...</p>;
-  }
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    localStorage.set('currentMovie', film);
+    if (film) {
+      const storedMovieData = localStorage.get('currentMovie');
+      // eslint-disable-next-line react/prop-types
+      if (!storedMovieData || storedMovieData.id !== film.id) {
+        localStorage.set('currentMovie', film);
+      }
+      setLoading(false);
+    }
   }, [film]);
 
   const openAudioClip = () => {
     window.open(film.audio, '_blank');
   };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>
