@@ -27,23 +27,45 @@ const MovieSceneDetail = ({ film }) => {
 
   return (
     <>
-      <section>
-        <img className="" src={film.poster} alt="Movie poster" />
-        <h2>{film.movie}</h2>
-        <p>{film.phrase}</p>
-        <p>{film.year}</p>
-        <p>{film.director}</p>
-        <a
-          href={film.audio}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={openAudioClip}
-        >
-          <span role="img" aria-label="Audio Clip">
-            🎧
-          </span>{' '}
-          Listen audio
-        </a>
+      <section className="details">
+        <img className="details_img" src={film.poster} alt="Movie poster" />
+        <div className="details_info">
+          <h2 className="details_info-title">{film.movie}</h2>
+          <p className="details_info-phrase">
+            <span className="icon">
+              <i className="fa-solid fa-quote-left"></i>
+            </span>
+            {film.phrase}
+          </p>
+          <p className="details_info-year">
+            <span className="icon">
+              <i className="fa-solid fa-calendar-days"></i>
+            </span>
+            {film.year}
+          </p>
+          <p className="details_info-director">
+            <span className="icon">
+              <i className="fa-solid fa-user"></i>
+            </span>
+            {film.director}
+          </p>
+          <a
+            className="details_audio"
+            href={film.audio}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={openAudioClip}
+          >
+            <span
+              className="details_audio-icon"
+              role="img"
+              aria-label="Audio Clip"
+            >
+              <i className="fa-solid fa-headphones"></i>
+            </span>{' '}
+            Listen audio
+          </a>
+        </div>
       </section>
     </>
   );
