@@ -6,7 +6,8 @@ const Header = () => {
     <>
       <div className="header">
         <h1 className="header_title">
-          Owen Wilson's "wow" <i className="fa-solid fa-film"></i>
+          Owen Wilson's "wow"{' '}
+          <i className="fa-solid fa-film header_title-icon"></i>
         </h1>
       </div>
     </>

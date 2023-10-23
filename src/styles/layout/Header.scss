@@ -1,7 +1,18 @@
 .header {
-  text-align: center;
+  width: 100vw;
+  margin: auto;
   padding: 2rem;
+  background-color: rgba(255, 255, 255, 1);
   &_title {
+    color: #30d9c4;
     font-weight: 800;
+    font-size: 1.7rem;
+    text-align: center;
+    @media all and (min-width: 768px) {
+      font-size: 2rem;
+    }
+    &-icon {
+      color: #54575a;
+    }
   }
 }

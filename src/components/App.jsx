@@ -65,7 +65,7 @@ function App() {
       <header>
         <Header />
       </header>
-      <main>
+      <main className="main">
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route
