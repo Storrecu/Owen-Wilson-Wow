@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import '../../styles/layout/FilterByName.scss';
 
 const FilterByName = ({ filterValue, filterChange }) => {
   const handleInput = (ev) => {
@@ -6,18 +7,18 @@ const FilterByName = ({ filterValue, filterChange }) => {
   };
   return (
     <>
-      <label htmlFor="">
+      <label htmlFor="" className="filter_sec-form-label">
         Name
-        <input
-          type="text"
-          className="form__input-text"
-          name="search_name"
-          id="search_name"
-          placeholder="Write the name of the movie"
-          value={filterValue}
-          onChange={handleInput}
-        />
       </label>
+      <input
+        type="text"
+        className="filter_sec-form-label-input"
+        name="search_name"
+        id="search_name"
+        placeholder="Write a movie name"
+        value={filterValue}
+        onChange={handleInput}
+      />
     </>
   );
 };

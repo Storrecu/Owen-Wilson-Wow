@@ -1,0 +1,5 @@
+input[type='text'] {
+  @media all and (min-width: 768px) {
+    width: 35%;
+  }
+}

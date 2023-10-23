@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import '../../styles/layout/Filters.scss';
 import FilterByName from './FilterByName';
 import FilterByYear from './FilterByYear';
 
@@ -15,8 +16,8 @@ const Filters = ({
 
   return (
     <>
-      <h2>Filter by...</h2>
-      <form onSubmit={handleFormSubmit}>
+      <h2 className="filter_sec-title ">Filter by...</h2>
+      <form className="filter_sec-form" onSubmit={handleFormSubmit}>
         <FilterByName filterValue={filterValue} filterChange={filterChange} />
         <FilterByYear
           selectYear={selectYear}

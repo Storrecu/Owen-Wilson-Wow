@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import '../../styles/layout/FilterByYear.scss';
 
 const FilterByYear = ({ selectYear, selectChange, yearsOfScenes }) => {
   const handleSelect = (ev) => {
@@ -18,19 +19,17 @@ const FilterByYear = ({ selectYear, selectChange, yearsOfScenes }) => {
 
   return (
     <>
-      <label htmlFor="">
-        Year
-        <select
-          className="form__input-text"
-          name="selectYear"
-          id="selectYear"
-          value={selectYear}
-          onChange={handleSelect}
-        >
-          <option value="">All years</option>
-          {renderYearsOptions()}
-        </select>
-      </label>
+      <label htmlFor="">Year</label>
+      <select
+        className="form__input-text"
+        name="selectYear"
+        id="selectYear"
+        value={selectYear}
+        onChange={handleSelect}
+      >
+        <option value="">All</option>
+        {renderYearsOptions()}
+      </select>
     </>
   );
 };
