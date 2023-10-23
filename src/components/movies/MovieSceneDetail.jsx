@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import '../../styles/layout/MovieSceneDetail.scss';
 import PropTypes from 'prop-types';
 import localStorage from '../../services/localStorage';
 
@@ -27,7 +28,7 @@ const MovieSceneDetail = ({ film }) => {
   return (
     <>
       <section>
-        <img className="card" src={film.poster} alt="Movie poster" />
+        <img className="" src={film.poster} alt="Movie poster" />
         <h2>{film.movie}</h2>
         <p>{film.phrase}</p>
         <p>{film.year}</p>

@@ -2,12 +2,16 @@
 @import '../styles/layout/Header.scss';
 @import '../styles/layout/Landing.scss';
 @import '../styles/layout/Footer.scss';
-
-.card {
-  width: 100px;
-  height: 20%;
-}
+@import '../styles//layout/MovieSceneList.scss';
+@import '../styles/layout/MovieSceneItem.scss';
+@import '../styles/layout/MovieSceneDetail.scss';
 
 .main {
   height: 100vh;
+  overflow: scroll;
+}
+
+.link {
+  text-decoration: none;
+  color: #54575a;
 }

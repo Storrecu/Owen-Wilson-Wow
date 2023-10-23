@@ -7,7 +7,7 @@ const FilterByName = ({ filterValue, filterChange }) => {
   return (
     <>
       <label htmlFor="">
-        Search by name
+        Name
         <input
           type="text"
           className="form__input-text"

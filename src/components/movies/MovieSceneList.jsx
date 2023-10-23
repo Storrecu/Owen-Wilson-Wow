@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import '../../styles/layout/MovieSceneList.scss';
 import PropTypes from 'prop-types';
 import MovieSceneItem from './MovieSceneItem';
 
@@ -29,7 +30,7 @@ const MovieSceneList = ({ filmList }) => {
 
   return (
     <>
-      <ul>{renderFilmItem}</ul>
+      <ul className="filmList">{renderFilmItem}</ul>
     </>
   );
 };

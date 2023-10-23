@@ -11,14 +11,16 @@ const Landing = () => {
         src={pureWow}
         alt="Deep think of Owen Wilson"
       />
-      <img
-        className="landing_img-two"
-        src={wowLogo}
-        alt="Owen Wilson official API logo"
-      />
-      <Link className="landing_link" to="/movies">
-        Go to wow scenes
-      </Link>
+      <div className="section">
+        <img
+          className="section_img"
+          src={wowLogo}
+          alt="Owen Wilson official API logo"
+        />
+        <Link className="section_link" to="/movies">
+          Go to wow scenes
+        </Link>
+      </div>
     </div>
   );
 };

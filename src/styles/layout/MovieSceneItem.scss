@@ -1,0 +1,46 @@
+.link {
+  text-decoration: none;
+  color: #54575a;
+}
+
+.filmList-item {
+  background-color: #86d3c9;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+
+  &-img {
+    width: 90%;
+    @media all and (min-width: 1200px) {
+      width: 95%;
+    }
+  }
+
+  &-title,
+  &-text {
+    font-size: 1.3rem;
+    margin: auto;
+    padding: 0.5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 2.5rem;
+
+    @media all and (min-width: 1200px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &-title {
+    font-size: 1.6rem;
+    max-height: 2.5rem;
+
+    @media all and (min-width: 1200px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &-text {
+    color: #fff;
+  }
+}

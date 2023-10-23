@@ -19,7 +19,7 @@ const FilterByYear = ({ selectYear, selectChange, yearsOfScenes }) => {
   return (
     <>
       <label htmlFor="">
-        Search by year
+        Year
         <select
           className="form__input-text"
           name="selectYear"

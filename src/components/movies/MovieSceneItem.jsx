@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../../styles/layout/MovieSceneItem.scss';
 import PropTypes from 'prop-types';
 import MovieSceneDetail from './MovieSceneDetail';
 
@@ -11,12 +12,15 @@ const MovieSceneItem = ({ film }) => {
     setIsClicked(!isClicked);
   };
   return (
-    <Link to={'/movies/' + film.id}>
-      <li onClick={handleClick}>
-        <img className="card" src={film.poster} alt="Movie poster" />
-        <h2>{film.movie}</h2>
-        <p>{film.phrase}</p>
-        <p>{film.year}</p>
+    <Link className="link" to={'/movies/' + film.id}>
+      <li className="filmList-item" onClick={handleClick}>
+        <img
+          className="filmList-item-img"
+          src={film.poster}
+          alt="Movie poster"
+        />
+        <h2 className="filmList-item-title">{`${film.movie}-${film.year}`}</h2>
+        <p className="filmList-item-text">{film.phrase}</p>
         {isClicked ? <MovieSceneDetail {...film} /> : ''}
       </li>
     </Link>

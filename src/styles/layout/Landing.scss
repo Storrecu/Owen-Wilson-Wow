@@ -6,7 +6,9 @@
   align-items: center;
   height: 100%;
   gap: 2rem;
+  overflow: scroll;
   &_img-one {
+    margin-top: 15%;
     max-width: 85%;
     border-radius: 50px;
     -webkit-mask-image: radial-gradient(
@@ -15,13 +17,20 @@
       rgba(0, 0, 0, 0) 95%
     );
   }
-  &_img-two {
-    max-width: 20%;
+}
+
+.section {
+  display: flex;
+  justify-content: space-evenly;
+  &_img {
+    max-width: 30%;
     border-radius: 50%;
     margin-top: 3rem;
+    margin-bottom: 3rem;
   }
   &_link {
+    margin-top: 8rem;
     text-decoration: none;
-    color: #636363;
+    color: #54575a;
   }
 }
