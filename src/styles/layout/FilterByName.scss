@@ -1,5 +1,8 @@
-input[type='text'] {
+.filter_sec-form-label-input {
+  border: 1px solid #86d3c9;
+  outline: none;
+  border-radius: 5px;
   @media all and (min-width: 768px) {
-    width: 35%;
+    width: 45%;
   }
 }

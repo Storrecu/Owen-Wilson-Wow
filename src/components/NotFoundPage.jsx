@@ -6,7 +6,9 @@ const NotFoundPage = () => {
       <h2>
         It seems you are lost... need some help? Turn back into the Home Page.
       </h2>
-      <Link to="/">Back to Home Page</Link>
+      <Link to="/">
+        <p className="link-back-list">Back to Home Page </p>
+      </Link>
     </>
   );
 };

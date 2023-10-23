@@ -1,17 +1,32 @@
 //estilos generales
 
-// div {
-//   height: 100vh;
-// }
-
-.light {
-  background-color: lightblue;
+.main {
+  height: 100vh;
+  overflow: scroll;
 }
 
-.dark {
-  background-color: darkblue;
+.link-back-list {
+  width: 30%;
+  text-decoration: none;
+  border: 1px solid #86d3c9;
+  border-radius: 5px;
+  background-color: #54575a;
+  color: #86d3c9;
+  margin: auto;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-.collapsed {
-  display: none;
+.link-back-home {
+  width: 30%;
+  text-decoration: none;
+  border: 1px solid #86d3c9;
+  border-radius: 5px;
+  background-color: #54575a;
+  color: #86d3c9;
+  margin: auto;
+  padding: 0.5rem;
+  margin: auto;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }

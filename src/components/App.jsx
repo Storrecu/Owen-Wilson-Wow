@@ -80,7 +80,9 @@ function App() {
                   yearsOfScenes={yearsOfScenes}
                 />
                 <MovieSceneList filmList={filteredFilmList} />
-                <Link to="/">Back to Home Page</Link>
+                <Link to="/">
+                  <p className="link-back-list">Back to Home Page </p>
+                </Link>
               </>
             }
           />
@@ -89,7 +91,9 @@ function App() {
             element={
               <>
                 <MovieSceneDetails film={movieData} />
-                <Link to="/movies">Back to movies list</Link>
+                <Link to="/movies">
+                  <p className="link-back-home">Back to movies list</p>
+                </Link>
               </>
             }
           />

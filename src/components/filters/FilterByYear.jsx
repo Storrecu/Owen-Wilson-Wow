@@ -11,7 +11,7 @@ const FilterByYear = ({ selectYear, selectChange, yearsOfScenes }) => {
     const uniqueYears = new Set(yearsOfScenes);
     const sortedYears = Array.from(uniqueYears).sort();
     return sortedYears.map((eachYear, i) => (
-      <option key={i} value={eachYear}>
+      <option key={i} value={eachYear} className="form__input-select-op">
         {eachYear}
       </option>
     ));
@@ -21,13 +21,15 @@ const FilterByYear = ({ selectYear, selectChange, yearsOfScenes }) => {
     <>
       <label htmlFor="">Year</label>
       <select
-        className="form__input-text"
+        className="form__input-select"
         name="selectYear"
         id="selectYear"
         value={selectYear}
         onChange={handleSelect}
       >
-        <option value="">All</option>
+        <option value="" className="form__input-select-op">
+          All
+        </option>
         {renderYearsOptions()}
       </select>
     </>
