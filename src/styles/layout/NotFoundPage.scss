@@ -1,0 +1,28 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  margin: 5%;
+  &_title {
+    margin: auto;
+    text-align: center;
+    padding: 3rem;
+    width: 100%;
+    @media all and (min-width: 768px) {
+      font-size: 3rem;
+    }
+    @media all and (min-width: 1200px) {
+      font-size: 4rem;
+    }
+  }
+}
+
+.notFound_img {
+  width: 100%;
+  border-radius: 20%;
+  margin: auto;
+  @media all and (min-width: 1200px) {
+    width: 80%;
+  }
+}

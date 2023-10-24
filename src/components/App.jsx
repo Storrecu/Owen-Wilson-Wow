@@ -5,6 +5,7 @@ import { useLocation, matchPath } from 'react-router';
 import { v4 as uuidv4 } from 'uuid';
 import '../styles/App.scss';
 import callToApi from '../services/callToApi';
+import localStorage from '../services/localStorage';
 import Header from './common/Header';
 import Footer from './common/Footer';
 import Landing from './Landing';
@@ -21,13 +22,21 @@ function App() {
 
   //effects
   useEffect(() => {
-    callToApi().then((response) => {
-      const filmWithIds = response.map((film) => ({
-        ...film,
-        id: uuidv4(),
-      }));
-      setFilmList(filmWithIds);
-    });
+    // Load film list from localStorage or API
+    const storedFilmList = localStorage.get('filmList');
+    if (storedFilmList) {
+      setFilmList(storedFilmList);
+    } else {
+      callToApi().then((response) => {
+        const filmsWithIds = response.map((film) => ({
+          ...film,
+          id: uuidv4(),
+        }));
+        setFilmList(filmsWithIds);
+        // Save film list to localStorage
+        localStorage.set('filmList', filmsWithIds);
+      });
+    }
   }, []);
 
   //handlers from events
@@ -80,7 +89,7 @@ function App() {
                   yearsOfScenes={yearsOfScenes}
                 />
                 <MovieSceneList filmList={filteredFilmList} />
-                <Link to="/">
+                <Link className="links" to="/">
                   <p className="link-back-list">Back to Home Page </p>
                 </Link>
               </>
@@ -91,7 +100,7 @@ function App() {
             element={
               <>
                 <MovieSceneDetails film={movieData} />
-                <Link to="/movies">
+                <Link className="links" to="/movies">
                   <p className="link-back-home">Back to movies list</p>
                 </Link>
               </>

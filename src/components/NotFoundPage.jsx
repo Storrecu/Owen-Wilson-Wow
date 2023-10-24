@@ -1,15 +1,22 @@
 import { Link } from 'react-router-dom';
+import '../styles/layout/NotFoundPage.scss';
+import NotFoundImg from '../images/404.jpeg';
 
 const NotFoundPage = () => {
   return (
-    <>
-      <h2>
+    <div className="notFound">
+      <h2 className="notFound_title">
         It seems you are lost... need some help? Turn back into the Home Page.
       </h2>
-      <Link to="/">
+      <Link className="links" to="/">
         <p className="link-back-list">Back to Home Page </p>
       </Link>
-    </>
+      <img
+        className="notFound_img"
+        src={NotFoundImg}
+        alt="Error, page not found"
+      />
+    </div>
   );
 };
 

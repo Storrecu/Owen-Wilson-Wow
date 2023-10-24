@@ -1,21 +1,36 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../../styles/layout/MovieSceneDetail.scss';
 import PropTypes from 'prop-types';
 import localStorage from '../../services/localStorage';
 
 const MovieSceneDetail = ({ film }) => {
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     if (film) {
-      const storedMovieData = localStorage.get('currentMovie');
-      // eslint-disable-next-line react/prop-types
-      if (!storedMovieData || storedMovieData.id !== film.id) {
-        localStorage.set('currentMovie', film);
-      }
       setLoading(false);
+    } else {
+      const storedMovieData = localStorage.get('currentMovie');
+
+      if (storedMovieData) {
+        const currentPathname = location.pathname;
+        const storedMovieId = storedMovieData.id;
+
+        // revisa si la película clicada coincide con la id de las películas del LS
+        if (currentPathname.includes(`/movies/${storedMovieId}`)) {
+          setLoading(false);
+        } else {
+          // en caso que no haya coincidencia te redirecciona a los detalles de la película
+          window.location.href = `/movies/${storedMovieId}`;
+        }
+      } else {
+        // en caos que no coincida te muestra Loading
+        setLoading(false);
+      }
     }
-  }, [film]);
+  }, [film, location.pathname]);
 
   const openAudioClip = () => {
     window.open(film.audio, '_blank');

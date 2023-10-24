@@ -17,7 +17,11 @@ const Filters = ({
   return (
     <>
       <h2 className="filter_sec-title ">Filter by...</h2>
-      <form className="filter_sec-form" onSubmit={handleFormSubmit}>
+      <form
+        id="filters-section"
+        className="filter_sec-form"
+        onSubmit={handleFormSubmit}
+      >
         <FilterByName filterValue={filterValue} filterChange={filterChange} />
         <FilterByYear
           selectYear={selectYear}
