@@ -57,7 +57,7 @@ Pero, no sé el motivo las etiquetas de HTML me aparecen duplicadas en las devTo
 A futuro trataré de implementar correctamente el truncado de strings con ellipsis y el botón que te permita volver a la parte superior de la página.
 
 ## Visualización del proyecto: 
-Puedes consultar y verificar todo esto pinchando en el enlace: http://beta.adalab.es/modulo-3-evaluacion-final-Storrecu/
+Puedes consultar y verificar todo esto pinchando en el enlace: https://storrecu.github.io/Owen-Wilson-Wow/
 
 ## Teconologías usadas: 
 
